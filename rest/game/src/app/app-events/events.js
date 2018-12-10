@@ -1,4 +1,4 @@
-let events = (function(){
+const events = (function(){
 
     function changeButton(button) {
         if(button.innerText == "нанять"){

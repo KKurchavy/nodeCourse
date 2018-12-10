@@ -19,7 +19,7 @@ const process = (() => {
         },
 
         stop() {
-            clearTimeout(TIMER_ID); 
+            clearInterval(TIMER_ID); 
         }
     }
 

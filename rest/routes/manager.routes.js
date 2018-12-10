@@ -13,38 +13,31 @@ class ManagerRouter {
     }
 
     __configure() {
-        this.__router.get('/:name', (req, res) => {
+
+        this.__router.delete('/:name', async (req, res) => {
             const {name} = req.params;
 
-            res.json(
-                managerController.findOne(name)
-            );
-        });
-
-        this.__router.delete('/:name', (req, res) => {
-            const {name} = req.params;
-
-            managerController.deleteOne(name);
+            await managerController.deleteOne(name);
             res.status(200).end();
         });
 
-        this.__router.post('/', (req, res) => {
+        this.__router.post('/', async (req, res) => {
             const {body} = req;
 
-            managerController.create(body);
+            await managerController.create(body);
             res.status(201).end();
         });
 
 
-        this.__router.put('/:name', (req, res) => {
+        this.__router.put('/:name', async (req, res) => {
             const {body, params: {name}} = req;
 
-            managerController.updateOne(name, body);
+            await managerController.updateOne(name, body);
             res.status(200).end();
         });
 
-        this.__router.get('/', (req, res) => {
-            res.json(managerController.findAll());
+        this.__router.get('/', async (req, res) => {
+            res.json(await managerController.findAll());
         });
     }
 }

@@ -1,35 +1,21 @@
-const {developers} = require('../mocks/developers.mock');
-const {Developer} = require('../models/Developer');
+const {developerRepository} = require('../repositories/developer.repository');
  
 class DeveloperController {
-    findOne(name) {
-        return developers.find(
-            ({name: dName}) => dName === name
-        );
+
+    async findAll() {
+        return await developerRepository.getAll();
     }
 
-    findAll() {
-        return developers;
+    async create(developer) {
+        await developerRepository.createOne(developer);
     }
 
-    create({name, surname, level, salary}) {
-        const developer = new Developer(name, surname, level, salary);
-
-        developers.push(developer);
+    async updateOne(dName, developer) {
+        await developerRepository.updateOne(dName, developer);
     }
 
-    updateOne(dName, {name, surname, level, salary}) {
-        const developer = this.findOne(dName);
-        
-        developer.name = name || developer.name;
-        developer.surname = surname || developer.surname;
-        developer.level = level || developer.level;
-        developer.salary = salary || developer.salary; 
-    }
-
-    deleteOne(name) {
-        const index = developers.findIndex(d => (d.name === name));
-        developers.splice(index, 1);
+    async deleteOne(name) {
+        await developerRepository.deleteOne(name);
     }
 }
 

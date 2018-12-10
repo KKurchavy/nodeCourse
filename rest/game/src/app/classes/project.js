@@ -4,7 +4,6 @@ class Project{
         this.name = name;
         this.cost = cost;
         this.linesCount = linesCount;
-        this.free = true;
     }
 
     addDeveloper(developer) {

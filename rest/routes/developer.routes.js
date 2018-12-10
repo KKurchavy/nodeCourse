@@ -21,30 +21,31 @@ class DevelopersRouter {
             );
         });
 
-        this.__router.delete('/:name', (req, res) => {
+        this.__router.delete('/:name', async (req, res) => {
             const {name} = req.params;
-            developerController.deleteOne(name);
+
+            await developerController.deleteOne(name);
             res.status(200).end();
         });
 
-        this.__router.post('/', (req, res) => {
+        this.__router.post('/', async (req, res) => {
             const {body} = req;
-            console.log(body);
-            developerController.create(body);
+            
+            await developerController.create(body);
             res.status(201).end();
         });
 
 
-        this.__router.put('/:name', (req, res) => {
+        this.__router.put('/:name', async (req, res) => {
             const {body, params: {name}} = req;
             console.log(body);
 
-            developerController.updateOne(name, body);
+            await developerController.updateOne(name, body);
             res.status(200).end();
         });
 
-        this.__router.get('/', (req, res) => {
-            res.json(developerController.findAll());
+        this.__router.get('/', async (req, res) => {
+            res.json(await developerController.findAll());
         });
     }
 }
