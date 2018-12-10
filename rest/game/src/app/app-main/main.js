@@ -1,4 +1,5 @@
 (() => {
+    
     function connectScript(scriptURL) {
         const script = document.createElement('script');
         script.src = scriptURL;
@@ -16,12 +17,17 @@
     connectScript("./src/app/app-events/events.js");
     connectScript("./src/app/app-process/process.js");
 
-    window.onload = () => {
+    window.onload = async () => {
         const applicantsList = document.querySelector(".applicants");
         const projectsList = document.querySelector(".projects");
-        filling.showListInNode(entities.developers, applicantsList.querySelector(".developers"));
-        filling.showListInNode(entities.managers, applicantsList.querySelector(".managers"));
-        filling.showListInNode(entities.projects, projectsList);
+
+        entities.getAll()
+        .then(() => {
+            filling.showListInNode(entities.developers, applicantsList.querySelector(".developers"));
+            filling.showListInNode(entities.managers, applicantsList.querySelector(".managers"));
+            filling.showListInNode(entities.projects, projectsList);
+        })
+
         events.setHandler(document.querySelector(".applicants"), events.hireHandler);
         events.setHandler(document.querySelector(".workers"), events.fireHandler);
         events.setHandler(document.querySelector(".start"), process.start);

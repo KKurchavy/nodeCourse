@@ -4,8 +4,11 @@ const bodyParser = require('body-parser');
 const {developersRouter} = require('./routes/developer.routes');
 const {managersRouter} = require('./routes/manager.routes');
 const {projectsRouter} = require('./routes/project.routes');
+const {initConnection} = require('./db/dbConnector');
 
 const app = express();
+
+initConnection();
 
 app.use(bodyParser.json());
 app.use('/developers', developersRouter.getRoutes());

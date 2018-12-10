@@ -8,20 +8,20 @@ const controller = (() => {
                 obj.surname = options[1];
                 obj.level = options[2];
                 obj.salary = +options[3];
-                break;
+                return new Developer(obj);
             case "manager":
                 obj.name = options[0];
                 obj.surname = options[1];
                 obj.experience = +options[2];
                 obj.salary = +options[3];
-                break;
+                return new Manager(obj);
             case "project":
                 obj.name = options[0];
                 obj.cost = +options[1];
                 obj.linesCount = +options[2];
+                return new Project(obj);
         }
         
-        return obj;
     }
 
     return {

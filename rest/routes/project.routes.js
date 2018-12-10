@@ -13,38 +13,31 @@ class ProjectRouter {
     }
 
     __configure() {
-        this.__router.get('/:name', (req, res) => {
+
+        this.__router.delete('/:name', async (req, res) => {
             const {name} = req.params;
 
-            res.json(
-                projectController.findOne(name)
-            );
-        });
-
-        this.__router.delete('/:name', (req, res) => {
-            const {name} = req.params;
-
-            projectController.deleteOne(name);
+            await projectController.deleteOne(name);
             res.status(200).end();
         });
 
-        this.__router.post('/', (req, res) => {
+        this.__router.post('/', async (req, res) => {
             const {body} = req;
 
-            projectController.create(body);
+            await projectController.create(body);
             res.status(201).end();
         });
 
 
-        this.__router.put('/:name', (req, res) => {
+        this.__router.put('/:name', async (req, res) => {
             const {body, params: {name}} = req;
 
-            projectController.updateOne(name, body);
+            await projectController.updateOne(name, body);
             res.status(200).end();
         });
 
-        this.__router.get('/', (req, res) => {
-            res.json(projectController.findAll());
+        this.__router.get('/', async (req, res) => {
+            res.json(await projectController.findAll());
         });
     }
 }

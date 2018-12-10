@@ -1,35 +1,21 @@
-const {projects} = require('../mocks/projects.mock');
-const {Project} = require('../models/Project');
+const {projectRepository} = require('../repositories/project.repository')
  
 class ProjectController {
-    findOne(name) {
-        return projects.find(
-            ({name: pName}) => pName === name
-        );
+
+    async findAll() {
+        return await projectRepository.getAll();
     }
 
-    findAll() {
-        return projects;
+    async create(project) {
+        await projectRepository.createOne(project);
     }
 
-    create({name, cost, linesCount}) {
-        const project = new Project(name, cost, linesCount);
-
-        projects.push(project);
+    async updateOne(pName, project) {
+        await projectRepository.updateOne(pName, project);
     }
 
-    updateOne(pName, {name, cost, linesCount}) {
-        const project = this.findOne(pName);
-
-        project.name = name || project.name;
-        project.cost = cost || project.cost;
-        project.linesCount = linesCount || project.linesCount;
-    }
-
-    deleteOne(name) {
-        const index = projects.findIndex(p =>(p.name === name));
-        projects.splice(index, 1);
-
+    async deleteOne(name) {
+        await projectRepository.deleteOne(name);
     }
 }
 
