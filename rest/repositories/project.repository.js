@@ -9,12 +9,12 @@ class ProjectRepository {
         return await ProjectModel.create(project);
     }
 
-    async deleteOne(name) {
-        return await ProjectModel.deleteOne({name});
+    async deleteOne(_id) {
+        return await ProjectModel.deleteOne({_id});
     }
 
-    async updateOne(name, project) {
-        return await ProjectModel.updateOne({name}, project);
+    async updateOne(_id, project) {
+        return await ProjectModel.updateOne({_id}, project);
     }
 }
 

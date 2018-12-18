@@ -10,12 +10,12 @@ class ProjectController {
         await projectRepository.createOne(project);
     }
 
-    async updateOne(pName, project) {
-        await projectRepository.updateOne(pName, project);
+    async updateOne(id, project) {
+        await projectRepository.updateOne(id, project);
     }
 
-    async deleteOne(name) {
-        await projectRepository.deleteOne(name);
+    async deleteOne(id) {
+        await projectRepository.deleteOne(id);
     }
 }
 

@@ -14,10 +14,10 @@ class ProjectRouter {
 
     __configure() {
 
-        this.__router.delete('/:name', async (req, res) => {
-            const {name} = req.params;
+        this.__router.delete('/:id', async (req, res) => {
+            const {id} = req.params;
 
-            await projectController.deleteOne(name);
+            await projectController.deleteOne(id);
             res.status(200).end();
         });
 
@@ -29,10 +29,10 @@ class ProjectRouter {
         });
 
 
-        this.__router.put('/:name', async (req, res) => {
-            const {body, params: {name}} = req;
+        this.__router.put('/:id', async (req, res) => {
+            const {body, params: {id}} = req;
 
-            await projectController.updateOne(name, body);
+            await projectController.updateOne(id, body);
             res.status(200).end();
         });
 
