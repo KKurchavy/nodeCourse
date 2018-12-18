@@ -10,12 +10,12 @@ class ManagerController {
         await managerRepository.createOne(manager);
     }
 
-    async updateOne(mName, manager) {
-        await managerRepository.updateOne(mName, manager);
+    async updateOne(id, manager) {
+        await managerRepository.updateOne(id, manager);
     }
 
-    async deleteOne(name) {
-        await managerRepository.deleteOne(name);
+    async deleteOne(id) {
+        await managerRepository.deleteOne(id);
     }
 }
 

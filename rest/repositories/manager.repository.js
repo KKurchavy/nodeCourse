@@ -9,12 +9,12 @@ class ManagerRepository {
         return await ManagerModel.create(manager);
     }
 
-    async deleteOne(name) {
-        return await ManagerModel.deleteOne({name});
+    async deleteOne(_id) {
+        return await ManagerModel.deleteOne({_id});
     }
 
-    async updateOne(name, manager) {
-        return await ManagerModel.updateOne({name}, manager);
+    async updateOne(_id, manager) {
+        return await ManagerModel.updateOne({_id}, manager);
     }
 }
 

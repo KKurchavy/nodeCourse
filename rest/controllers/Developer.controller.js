@@ -14,8 +14,8 @@ class DeveloperController {
         await developerRepository.updateOne(dName, developer);
     }
 
-    async deleteOne(name) {
-        await developerRepository.deleteOne(name);
+    async deleteOne(id) {
+        await developerRepository.deleteOne(id);
     }
 }
 

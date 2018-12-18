@@ -10,12 +10,12 @@ class DeveloperRepository {
         return await DevelopertModel.create(developer);
     }
 
-    async deleteOne(name) {
-        return await DevelopertModel.deleteOne({name});
+    async deleteOne(_id) {
+        return await DevelopertModel.deleteOne({_id});
     }
 
-    async updateOne(name, developer){
-        return await DevelopertModel.updateOne({name}, developer);
+    async updateOne(_id, developer){
+        return await DevelopertModel.updateOne({_id}, developer);
     }
 }
 

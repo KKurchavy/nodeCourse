@@ -21,10 +21,10 @@ class DevelopersRouter {
             );
         });
 
-        this.__router.delete('/:name', async (req, res) => {
-            const {name} = req.params;
+        this.__router.delete('/:id', async (req, res) => {
+            const {id} = req.params;
 
-            await developerController.deleteOne(name);
+            await developerController.deleteOne(id);
             res.status(200).end();
         });
 
@@ -36,11 +36,10 @@ class DevelopersRouter {
         });
 
 
-        this.__router.put('/:name', async (req, res) => {
-            const {body, params: {name}} = req;
-            console.log(body);
+        this.__router.put('/:id', async (req, res) => {
+            const {body, params: {id}} = req;
 
-            await developerController.updateOne(name, body);
+            await developerController.updateOne(id, body);
             res.status(200).end();
         });
 
